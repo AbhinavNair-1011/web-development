@@ -16,18 +16,30 @@ document.addEventListener("DOMContentLoaded", function() {
        input.style.backgroundColor="blue"
        input.style.color="cyan";
     }
-    let listItems= document.querySelectorAll("li");
+    // let listItems= document.querySelectorAll("li");
    
-    for(let list of listItems){
-        list.innerHTML="CHANGED"
-        list.style.color="brown"
+    // for(let list of listItems){
+    //     list.innerHTML="CHANGED"
+    //     list.style.color="brown"
+    //     list.style.fontSize="25px"
+    //     list.style.border="5px solid green"
+    //     list.style.fontWeight="bold";
+       
+    // }
+    // listItems[2].style.backgroundColor="green";
+   
+    let liByClass= document.getElementsByClassName("list-group-item");
+   
+    for(let list of liByClass){
+        list.style.color="green";
         list.style.fontSize="25px"
         list.style.border="5px solid green"
         list.style.fontWeight="bold";
-       
     }
-    listItems[2].style.backgroundColor="green";
 
-
-    });
+// let liByTag= document.getElementsByTagName("li");
+// for( let li of liByTag){
+//     li.style.color="purple"
+// }
+});
     

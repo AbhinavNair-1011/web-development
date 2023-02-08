@@ -73,13 +73,75 @@ newElem3.appendChild(newText3);
 listparent=listItem.parentElement;
 listparent.insertBefore(newElem3,listItem);
 newElem3.className="list-group-item";
-let liByClass= document.getElementsByClassName("list-group-item");
+
    
+let liByClass= document.getElementsByClassName("list-group-item");
 for(let list of liByClass){
     list.style.color="red";
     list.style.fontSize="25px"
     list.style.border="5px solid green"
     list.style.fontWeight="bold";
+   
+    
+}
+
+
+let btn=document.querySelector("input[type=submit]");
+
+
+btn.addEventListener("click",(e)=>{
+    e.preventDefault();
+let inputValue= document.querySelector("input[type=text]").value;
+let li= document.createElement("li");
+let newBtn= document.createElement("button");
+
+newBtn.appendChild(document.createTextNode("X"))
+newBtn.className="okay"
+newBtn.style.width="30px"
+newBtn.style.height="40px"
+newBtn.style.float="right";
+newBtn.style.color="yellow";
+newBtn.style.backgroundColor="gray";
+
+li.appendChild(document.createTextNode(inputValue));
+li.appendChild(newBtn)
+li.className="list-group-item";
+li.style.color="red";
+li.style.fontSize="25px"
+li.style.border="5px solid green"
+li.style.fontWeight="bold"
+
+listItem.parentElement.appendChild(li)
+
+});
+
+
+
+let listItems= document.querySelectorAll("li");
+for(let list of listItems){
+
+    var newBtn= document.createElement("button");
+
+newBtn.appendChild(document.createTextNode("X"))
+newBtn.className="okay"
+newBtn.style.width="30px"
+newBtn.style.height="40px"
+newBtn.style.float="right";
+newBtn.style.color="yellow";
+newBtn.style.backgroundColor="gray";
+
+    list.appendChild(newBtn);
+    
+}
+   
+ul.addEventListener('click',remove);
+
+function remove(e){
+    console.log(e)
+   if(e.target.classList.contains("okay")){
+   let li= e.target.parentElement;
+   li.style.display="none"
+   }
 }
 
 });

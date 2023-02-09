@@ -1,4 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
+
+    
     let title = document.getElementsByTagName("title")[0];
     title.innerText = "dom testingg";
    
@@ -17,11 +19,7 @@ document.addEventListener("DOMContentLoaded", function() {
    heading.parentElement.setAttribute("id","set-with-parent-element");
 
 
-    let inputs= document.querySelectorAll("input");
-       for(let input of inputs){
-       input.style.backgroundColor="blue"
-       input.style.color="cyan";
-    }
+    
 
     let listItem= document.querySelector("li");
    
@@ -80,20 +78,47 @@ for(let list of liByClass){
     list.style.color="red";
     list.style.fontSize="25px"
     list.style.border="5px solid green"
-    list.style.fontWeight="bold";
-   
-    
+    list.style.fontWeight="bold"; 
 }
+
+
 
 
 let btn=document.querySelector("#submit");
 
 
+let newInput=document.createElement("input");
+let iform=document.querySelector(".form-inline")
+
+
+newInput.className="form-control mr-2";
+newInput.setAttribute("type","text");
+newInput.setAttribute("id","m");
+newInput.setAttribute("placeholder","Item Description")
+
+iform.insertBefore(newInput,btn);
+
+let inputs= document.querySelectorAll("input");
+       for(let input of inputs){
+       input.style.backgroundColor="blue"
+       input.style.color="cyan";
+    }
+
+
+
+
+
+
 btn.addEventListener("click",(e)=>{
     e.preventDefault();
 let inputValue= document.querySelector("#n").value;
+let descriptionValue= document.querySelector("#m").value;
 let li= document.createElement("li");
 let newBtn= document.createElement("button");
+
+
+
+
 
 newBtn.appendChild(document.createTextNode("X"))
 newBtn.className="okay"
@@ -103,7 +128,8 @@ newBtn.style.float="right";
 newBtn.style.color="yellow";
 newBtn.style.backgroundColor="gray";
 
-li.appendChild(document.createTextNode(inputValue));
+li.appendChild(document.createTextNode(`${inputValue} -->${descriptionValue}`))
+// li.appendChild(document.createTextNode(+ "---->"+descriptionValue))
 li.appendChild(newBtn)
 li.className="list-group-item";
 li.style.color="red";
@@ -161,5 +187,6 @@ function filter(e){
     }
    
 }
+
 
 });

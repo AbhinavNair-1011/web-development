@@ -115,6 +115,18 @@ let inputValue= document.querySelector("#n").value;
 let descriptionValue= document.querySelector("#m").value;
 let li= document.createElement("li");
 let newBtn= document.createElement("button");
+let editbtn= document.createElement("button");
+
+
+editbtn.appendChild(document.createTextNode("Edit"))
+
+editbtn.className="edit"
+editbtn.style.width="50px"
+editbtn.style.height="30px"
+editbtn.style.float="right";
+editbtn.style.color="yellow";
+editbtn.style.fontSize="15px"
+editbtn.style.backgroundColor="green";
 
 
 
@@ -129,8 +141,9 @@ newBtn.style.color="yellow";
 newBtn.style.backgroundColor="gray";
 
 li.appendChild(document.createTextNode(`${inputValue} -->${descriptionValue}`))
-// li.appendChild(document.createTextNode(+ "---->"+descriptionValue))
+
 li.appendChild(newBtn)
+li.appendChild(editbtn)
 li.className="list-group-item";
 li.style.color="red";
 li.style.fontSize="25px"
@@ -156,7 +169,21 @@ newBtn.style.float="right";
 newBtn.style.color="yellow";
 newBtn.style.backgroundColor="gray";
 
+let editbtn= document.createElement("button");
+
+
+editbtn.appendChild(document.createTextNode("Edit"))
+
+editbtn.className="edit"
+editbtn.style.width="50px"
+editbtn.style.height="30px"
+editbtn.style.float="right";
+editbtn.style.color="yellow";
+editbtn.style.fontSize="15px"
+editbtn.style.backgroundColor="green";
+
     list.appendChild(newBtn);
+    list.appendChild(editbtn)
     
 }
    
@@ -188,5 +215,85 @@ function filter(e){
    
 }
 
+// let editbtn=document.querySelectorAll(".edit");
+ul.addEventListener("click",edit);
 
-});
+function edit(e){
+    if(e.target.classList.contains("edit")){
+        
+        
+        let newBtn= document.createElement("button");
+
+        newBtn.appendChild(document.createTextNode("Set"))
+        newBtn.className="set"
+        newBtn.style.width="50px"
+        newBtn.style.height="30px"
+        newBtn.style.float="right";
+        newBtn.style.color="yellow";
+        newBtn.style.backgroundColor="red";
+        newBtn.style.fontSize="16px"
+
+
+   
+    let newInput= document.createElement("input");
+    newInput.className="editedValue";
+newInput.style,backgroundColor="grey";
+newInput.setAttribute("placeholder", "Edit Here")
+newInput.style.fontSize="15px"
+newInput.style.float="right"
+
+
+let x=e.target.parentElement;
+x.appendChild(newBtn)
+x.appendChild(newInput)
+
+
+
+newBtn.addEventListener("click",(e)=>{
+    let v=newInput.value;
+
+
+    e.target.parentElement.firstChild.textContent=v;
+
+    e.target.parentElement.lastElementChild.style.display="none";
+    let xx=e.target.parentElement.children;
+ for(let x of xx){
+    x.style.display="none"
+   
+ }
+ var newBtn= document.createElement("button");
+
+ newBtn.appendChild(document.createTextNode("X"))
+ newBtn.className="okay"
+ newBtn.style.width="30px"
+ newBtn.style.height="40px"
+ newBtn.style.float="right";
+ newBtn.style.color="yellow";
+ newBtn.style.backgroundColor="gray";
+
+ var editbtn= document.createElement("button");
+
+
+editbtn.appendChild(document.createTextNode("Edit"))
+
+editbtn.className="edit"
+editbtn.style.width="50px"
+editbtn.style.height="30px"
+editbtn.style.float="right";
+editbtn.style.color="yellow";
+editbtn.style.fontSize="15px"
+editbtn.style.backgroundColor="green";
+
+x.appendChild(newBtn)
+x.appendChild(editbtn)
+
+})
+
+
+
+    }
+}
+
+
+
+});;

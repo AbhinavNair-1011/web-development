@@ -115,6 +115,7 @@ let inputValue= document.querySelector("#n").value;
 let descriptionValue= document.querySelector("#m").value;
 let li= document.createElement("li");
 let newBtn= document.createElement("button");
+
 let editbtn= document.createElement("button");
 
 
@@ -142,7 +143,9 @@ newBtn.style.backgroundColor="gray";
 
 li.appendChild(document.createTextNode(`${inputValue} -->${descriptionValue}`))
 
+
 li.appendChild(newBtn)
+li.appendChild(editbtn)
 li.appendChild(editbtn)
 li.className="list-group-item";
 li.style.color="red";
@@ -169,6 +172,10 @@ newBtn.style.float="right";
 newBtn.style.color="yellow";
 newBtn.style.backgroundColor="gray";
 
+
+
+
+
 let editbtn= document.createElement("button");
 
 
@@ -183,6 +190,7 @@ editbtn.style.fontSize="15px"
 editbtn.style.backgroundColor="green";
 
     list.appendChild(newBtn);
+    list.appendChild(editbtn)
     list.appendChild(editbtn)
     
 }
@@ -296,4 +304,4 @@ x.appendChild(editbtn)
 
 
 
-});;
+});

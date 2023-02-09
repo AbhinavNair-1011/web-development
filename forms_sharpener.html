@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./app.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding:0;
+
+        }
+        body{
+            background-color: burlywood;
+            width: 100vw;
+            height:100vh;
+
+        }
+        form{
+            background-color: orange;
+    width: 100%;
+    height: 125%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid red;
+    border-radius: 147px
+
+
+        }
+        #form_page{
+           width: 50vw;
+           height: 50vh;
+           
+        }
+        #main_section{
+          height: 100%;
+          width:100%;
+          display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+        }
+
+        #submit{
+            height: 34px;
+    width: 131px;
+    border-radius: 28px;
+    position: relative;
+    top: 10%;
+    background-color: red;
+    color: honeydew
+
+}
+input, label {
+    width: 51%;
+    height: 8%;
+    font-size: 19px;
+    margin: 1px;
+    color: rgb(14, 8, 1)
+}
+
+h1,p{
+    color:blue;
+    padding: 10px;
+}
+h1{
+    font-size: 45px;
+    background-color: rgb(8, 10, 48);
+    width: 100%;
+    text-align: center;
+}
+p{
+    font-size: 20px;
+
+}
+
+    </style>
+</head>
+<body>
+    <div id="main_section">
+    <h1>Book a call</h1>
+    <p>book a slot and we will call you within the selected time</p>
+
+    <div id="form_page">
+<form action="" method=""  id="form">
+    <label for="name">NAME:</label class="h">
+    <input type="text" id="name" name="name" class="h">
+    <label for="email">EMAIL:</label class="h">
+ <input type="email" id="email" name="email" class="h">
+ <label for="phone">PHONE NO:</label class="h">
+ <input type="number" id="phone" name="phone" class="h">
+<label for="date">DATE:</label class="h">
+ <input type="date" id="date" name="date"  class="h" >
+ <input type="submit" value="Get A Call" id="submit"  >
+</form>
+
+</div>
+
+</div>
+<script>
+    let btn= document.querySelector("#submit");
+let name=document.querySelector("#name");
+let email=document.querySelector("#email");
+let phno=document.querySelector("#phone");
+let date=document.querySelector("#date");
+
+
+
+    btn.addEventListener("click", (e)=>{
+        e.preventDefault();
+      
+   localStorage.setItem("name",name.value);
+   localStorage.setItem("email",email.value);
+   localStorage.setItem("phone-no",phone.value);
+   localStorage.setItem("date",date.value)
+
+
+
+    });
+
+    
+    
+    </script>
+
+</body>
+</html>

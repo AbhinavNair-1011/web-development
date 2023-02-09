@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="./app.js"></script>
+ 
     <style>
         *{
             margin: 0;
@@ -102,23 +102,26 @@ p{
 </div>
 <script>
     let btn= document.querySelector("#submit");
-let name=document.querySelector("#name");
-let email=document.querySelector("#email");
-let phno=document.querySelector("#phone");
-let date=document.querySelector("#date");
+let name1=document.querySelector("#name");
+let email1=document.querySelector("#email");
+let phno1=document.querySelector("#phone");
+let date1=document.querySelector("#date");
 
 
-
+let arr=[];
     btn.addEventListener("click", (e)=>{
         e.preventDefault();
+       
+        let userDetails={
+        name:name1.value,
+        email:email1.value,
+        phone:phno1.value,
+        date:date1.value
+      }
       
-   localStorage.setItem("name",name.value);
-   localStorage.setItem("email",email.value);
-   localStorage.setItem("phone-no",phone.value);
-   localStorage.setItem("date",date.value)
-
-
-
+      arr.push(userDetails)
+       localStorage.setItem('details',JSON.stringify(arr))
+  
     });
 
     

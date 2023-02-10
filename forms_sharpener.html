@@ -14,14 +14,14 @@
         }
         body{
             background-color: burlywood;
-            width: 100vw;
-            height:100vh;
+            width: 99vw;
+            height:96vh;
 
         }
         form{
             background-color: orange;
     width: 100%;
-    height: 125%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -32,7 +32,7 @@
         }
         #form_page{
            width: 50vw;
-           height: 50vh;
+           height: 400px;
            
         }
         #main_section{
@@ -99,6 +99,25 @@ p{
 
 </div>
 
+
+
+<div id="table-section" class="table-section">
+<table>
+    <thead>
+    <tr>
+        <th>Name:</th>
+        <th>Email:</th>
+        <th>Phone No</th>
+        <th>Date:</th>
+        <th class="delete">Delete</th>
+    </tr>
+</thead>
+    <tbody>
+
+    </tbody>
+</table>
+
+</div>
 </div>
 <script>
     let btn= document.querySelector("#submit");
@@ -106,9 +125,30 @@ let name1=document.querySelector("#name");
 let email1=document.querySelector("#email");
 let phno1=document.querySelector("#phone");
 let date1=document.querySelector("#date");
+let tableBody= document.querySelector("tbody");
+let table=document.querySelector("table")
+
+let th=document.querySelectorAll("th");
+
+for (let each of th){
+    each.style.border="1px solid black";
+    each.style.width="260px"
 
 
-let arr=[];
+}
+// table.style.position="relative";
+// table.style.top="-508px"
+table.style.width="350px"
+table.style.marginTop="15px"
+
+table.style.borderCollapse="collapse";
+
+
+
+
+  let arr=[];
+
+
     btn.addEventListener("click", (e)=>{
         e.preventDefault();
        
@@ -116,13 +156,50 @@ let arr=[];
         name:name1.value,
         email:email1.value,
         phone:phno1.value,
-        date:date1.value
+        date:date1.value,
+        delete:true
       }
       
+     let tr= document.createElement("tr");
+      
      
-       localStorage.setItem(name1.value,JSON.stringify(userDetails))
-  
+       
+        for (let prop in userDetails){
+if(prop==="delete"){
+    let td=document.createElement("td");
+    
+    let btn=document.createElement("button");
+    btn.className="b"
+    btn.appendChild(document.createTextNode("Delete"))
+    td.appendChild(btn)
+    tr.appendChild(td)
+
+}else{
+            let td=document.createElement("td");
+            td.appendChild(document.createTextNode(userDetails[prop]));
+            tr.appendChild(td)
+            tableBody.appendChild(tr)
+            tr.style.border="2px solid black";
+             td.style.border="2px solid black";
+            tr.style.borderCollapse="collapse";
+             td.style.borderCollapse="collapse";
+}
+
+
+        }
+        localStorage.setItem(name1.value, JSON.stringify(userDetails))
+
+        table.addEventListener("click",(e)=>{
+            if(e.target.classList.contains("b")){
+               e.target.parentElement.parentElement.style.display="none";
+            //    localStorage.removeItem(name1.value)
+          localStorage.removeItem(e.target.parentElement.parentElement.firstElementChild.innerText);
+            }
+        })
     });
+
+        
+    
 
     
     

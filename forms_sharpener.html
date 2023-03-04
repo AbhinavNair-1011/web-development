@@ -5,7 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
- 
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="booking.js"></script>
+
     <style>
         *{
             margin: 0;
@@ -102,156 +104,11 @@ p{
 
 
 <div id="table-section" class="table-section">
-<table>
-    <thead>
-    <tr>
-        <th>Name:</th>
-        <th>Email:</th>
-        <th>Phone No</th>
-        <th>Date:</th>
-        <th class="delete">Delete/Edit</th>
-        
-    </tr>
-</thead>
-    <tbody>
-
-    </tbody>
-</table>
+<p id="p"></p>
 
 </div>
 </div>
-<script>
-    let btn= document.querySelector("#submit");
-let name1=document.querySelector("#name");
-let email1=document.querySelector("#email");
-let phno1=document.querySelector("#phone");
-let date1=document.querySelector("#date");
-let tableBody= document.querySelector("tbody");
-let table=document.querySelector("table")
-
-let th=document.querySelectorAll("th");
-
-for (let each of th){
-    each.style.border="1px solid black";
-    each.style.width="260px"
-
-
-}
-// table.style.position="relative";
-// table.style.top="-508px"
-table.style.width="350px"
-table.style.marginTop="15px"
-
-table.style.borderCollapse="collapse";
-
-
-
-
-  let arr=[];
-
-
-    btn.addEventListener("click", (e)=>{
-        e.preventDefault();
-       
-        let userDetails={
-        name:name1.value,
-        email:email1.value,
-        phone:phno1.value,
-        date:date1.value,
-        delete:true
-      }
-      
-     let tr= document.createElement("tr");
-      
-     
-       
-        for (let prop in userDetails){
-if(prop==="delete"){
-    let td=document.createElement("td");
-    let btn1=document.createElement("button");
-    let btn=document.createElement("button");
-    btn1.className="edit"
-    btn.className="b"
-    btn1.style.width="30px"
-    btn1.appendChild(document.createTextNode("Edit"))
-    btn.appendChild(document.createTextNode("Delete"))
-    td.appendChild(btn)
-    td.appendChild(btn1)
-    tr.appendChild(td)
-
-}else{
-            let td=document.createElement("td");
-            td.appendChild(document.createTextNode(userDetails[prop]));
-            tr.appendChild(td)
-            tableBody.appendChild(tr)
-            tr.style.border="2px solid black";
-             td.style.border="2px solid black";
-            tr.style.borderCollapse="collapse";
-             td.style.borderCollapse="collapse";
-}
-
-
-        }
-        localStorage.setItem(name1.value, JSON.stringify(userDetails))
-
-        table.addEventListener("click",(e)=>{
-            if(e.target.classList.contains("b")){
-               e.target.parentElement.parentElement.style.display="none";
-        
-          localStorage.removeItem(e.target.parentElement.parentElement.firstElementChild.innerText);
-            }else if(e.target.classList.contains("edit")){
-                e.target.parentElement.parentElement.style.display="none";
-                let submitbtn=document.querySelector("#submit");
-               
-                submitbtn.value="Edit"
-                submitbtn.style.backgroundColor="yellow"
-                submitbtn.style.color="red"
-                submitbtn.parentElement.style.backgroundColor="red"
-                let children=e.target.parentElement.parentElement.children;
-                console.log(children[0].innerText);
-               name1.value=children[0].innerText;
-             email1.value=children[1].innerText;
-             phno1.value=children[2].innerText;
-             date1.value=children[3].innerText;
-submitbtn.addEventListener("click",(e)=>{
-    let userDetails={
-        name:name1.value,
-        email:email1.value,
-        phone:phno1.value,
-        date:date1.value,
-        delete:true
-      }
-    e.target.value="Get A Call";
-    localStorage.setItem(name1.value,JSON.stringify(userDetails))
-
-   
-})
-              
-            }
-            
-        })
-
-         let x=document.querySelectorAll("input");
-    for(let each of x){
-        if(each.type==="submit"){
-            break;
-        }
-        each.value="";
-        
-    }
-    let form=document.querySelector("#form");
-               
-                
-                form.style.backgroundColor="orange"
-                submitbtn.style.color="red"
-    });
-
-        
-    
-
-    
-    
-    </script>
 
 </body>
+
 </html>

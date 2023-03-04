@@ -78,6 +78,15 @@ p{
     font-size: 20px;
 
 }
+table{
+    margin-top:10px;
+    padding-top:10px;
+    border-collapse: collapse;
+}
+th,td{
+    border: 1px solid black;
+    padding:7px
+}
 
     </style>
 </head>
@@ -103,8 +112,22 @@ p{
 
 
 
-<div id="table-section" class="table-section">
-<p id="p"></p>
+<div id="viewing-section" class="table-section">
+<table>
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>PhoneNumber</th>
+        <th>Date</th>
+    </tr>
+</thead>
+<tbody id="tableBody">
+
+</tbody>
+
+</table>
 
 </div>
 </div>

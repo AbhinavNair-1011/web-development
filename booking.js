@@ -14,7 +14,7 @@ let tBody= document.querySelector("#tableBody");
 
 function getFromCrud(){
 
-    axios.get("https://crudcrud.com/api/9c5910c3743b43039d6a2c5fa2fbe4f0/bookingApp")
+    axios.get("https://crudcrud.com/api/70ba70c0bece4715a3a668e5043c7fc5/bookingApp")
     .then((res)=>{
         
 res.data.forEach((each)=>{
@@ -29,6 +29,12 @@ res.data.forEach((each)=>{
       td.appendChild(document.createTextNode(each[prop]))
       tr.appendChild(td);
     }
+    let btn=document.createElement("button");
+    
+    btn.appendChild(document.createTextNode("Delete"))
+    btn.setAttribute("id","delete");
+    btn.style.margin="10px";
+    tr.appendChild(btn)
 tBody.appendChild(tr)
 
     
@@ -38,9 +44,7 @@ tBody.appendChild(tr)
     })
 
 }
- 
-  
-
+getFromCrud();
 
     btn.addEventListener("click", (e)=>{
         e.preventDefault();
@@ -58,7 +62,7 @@ tBody.appendChild(tr)
       
      
      
-     axios.post("https://crudcrud.com/api/9c5910c3743b43039d6a2c5fa2fbe4f0/bookingApp",userDetails).then((res)=>{
+     axios.post("https://crudcrud.com/api/70ba70c0bece4715a3a668e5043c7fc5/bookingApp",userDetails).then((res)=>{
        res.forEach((each)=>{
         
        })
@@ -81,8 +85,33 @@ tBody.appendChild(tr)
 
     });
 
+    function deleteUserData(){
+
+        let deleteBtn=document.querySelector("#delete");
+        deleteBtn.addEventListener("click", (e)=>{
+           e.target.parentElement.style.display="none"
+           let id= e.target.parentElement.firstChild.innerText;
+           console.log(id)
+           axios.delete("https://crudcrud.com/api/70ba70c0bece4715a3a668e5043c7fc5/bookingApp/?_id="+id)
+           .then((res)=>{
+            console.log(res)
+           })
+           .catch(err=>{
+            console.log(err)
+           })
+        })
         
-getFromCrud();
+    }
+     
+    setTimeout(()=>{
+        deleteUserData();
+
+    },1000)
+
+        
+  
+    
+
 
 });
     
